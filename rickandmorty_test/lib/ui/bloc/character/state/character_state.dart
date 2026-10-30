@@ -6,10 +6,13 @@ part 'character_state.g.dart';
 
 @freezed
 abstract class CharacterState with _$CharacterState {
-  factory CharacterState({
-    @Default([]) CharacterModel characters,
+  const factory CharacterState({
+    CharacterModel? characters,
     @Default(false) bool isLoading,
     @Default(null) String? error,
+    @Default([]) List<List<CharacterResult>> pages,
+    @Default([]) List<int> pageKeys,
+    @Default(0) int retryAfterSeconds,
   }) = _CharacterState;
 
   factory CharacterState.fromJson(Map<String, dynamic> json) =>

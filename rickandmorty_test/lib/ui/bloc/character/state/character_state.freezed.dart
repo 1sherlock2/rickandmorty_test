@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CharacterState {
 
- CharacterModel get characters; bool get isLoading; String? get error;
+ CharacterModel? get characters; bool get isLoading; String? get error; List<List<CharacterResult>> get pages; List<int> get pageKeys; int get retryAfterSeconds;
 /// Create a copy of CharacterState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $CharacterStateCopyWith<CharacterState> get copyWith => _$CharacterStateCopyWith
 @override
 bool operator ==(Object other) {
   final _this = this as CharacterState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CharacterState&&(identical(other.characters, _this.characters) || other.characters == _this.characters)&&(identical(other.isLoading, _this.isLoading) || other.isLoading == _this.isLoading)&&(identical(other.error, _this.error) || other.error == _this.error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CharacterState&&(identical(other.characters, _this.characters) || other.characters == _this.characters)&&(identical(other.isLoading, _this.isLoading) || other.isLoading == _this.isLoading)&&(identical(other.error, _this.error) || other.error == _this.error)&&const DeepCollectionEquality().equals(other.pages, _this.pages)&&const DeepCollectionEquality().equals(other.pageKeys, _this.pageKeys)&&(identical(other.retryAfterSeconds, _this.retryAfterSeconds) || other.retryAfterSeconds == _this.retryAfterSeconds));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as CharacterState;
-  return Object.hash(runtimeType,_this.characters,_this.isLoading,_this.error);
+  return Object.hash(runtimeType,_this.characters,_this.isLoading,_this.error,const DeepCollectionEquality().hash(_this.pages),const DeepCollectionEquality().hash(_this.pageKeys),_this.retryAfterSeconds);
 }
 
 @override
 String toString() {
   final _this = this as CharacterState;
-  return 'CharacterState(characters: ${_this.characters}, isLoading: ${_this.isLoading}, error: ${_this.error})';
+  return 'CharacterState(characters: ${_this.characters}, isLoading: ${_this.isLoading}, error: ${_this.error}, pages: ${_this.pages}, pageKeys: ${_this.pageKeys}, retryAfterSeconds: ${_this.retryAfterSeconds})';
 }
 
 
@@ -54,11 +54,11 @@ abstract mixin class $CharacterStateCopyWith<$Res>  {
   factory $CharacterStateCopyWith(CharacterState value, $Res Function(CharacterState) _then) = _$CharacterStateCopyWithImpl;
 @useResult
 $Res call({
- CharacterModel characters, bool isLoading, String? error
+ CharacterModel? characters, bool isLoading, String? error, List<List<CharacterResult>> pages, List<int> pageKeys, int retryAfterSeconds
 });
 
 
-$CharacterModelCopyWith<$Res> get characters;
+$CharacterModelCopyWith<$Res>? get characters;
 
 }
 /// @nodoc
@@ -71,21 +71,27 @@ class _$CharacterStateCopyWithImpl<$Res>
 
 /// Create a copy of CharacterState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? characters = null,Object? isLoading = null,Object? error = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? characters = freezed,Object? isLoading = null,Object? error = freezed,Object? pages = null,Object? pageKeys = null,Object? retryAfterSeconds = null,}) {
   return _then(CharacterState(
-characters: null == characters ? _self.characters : characters // ignore: cast_nullable_to_non_nullable
-as CharacterModel,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+characters: freezed == characters ? _self.characters : characters // ignore: cast_nullable_to_non_nullable
+as CharacterModel?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,pages: null == pages ? _self.pages : pages // ignore: cast_nullable_to_non_nullable
+as List<List<CharacterResult>>,pageKeys: null == pageKeys ? _self.pageKeys : pageKeys // ignore: cast_nullable_to_non_nullable
+as List<int>,retryAfterSeconds: null == retryAfterSeconds ? _self.retryAfterSeconds : retryAfterSeconds // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 /// Create a copy of CharacterState
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$CharacterModelCopyWith<$Res> get characters {
-  
-  return $CharacterModelCopyWith<$Res>(_self.characters, (value) {
+$CharacterModelCopyWith<$Res>? get characters {
+    if (_self.characters == null) {
+    return null;
+  }
+
+  return $CharacterModelCopyWith<$Res>(_self.characters!, (value) {
     return _then(_self.copyWith(characters: value));
   });
 }
@@ -170,10 +176,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CharacterModel characters,  bool isLoading,  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CharacterModel? characters,  bool isLoading,  String? error,  List<List<CharacterResult>> pages,  List<int> pageKeys,  int retryAfterSeconds)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CharacterState() when $default != null:
-return $default(_that.characters,_that.isLoading,_that.error);case _:
+return $default(_that.characters,_that.isLoading,_that.error,_that.pages,_that.pageKeys,_that.retryAfterSeconds);case _:
   return orElse();
 
 }
@@ -191,10 +197,10 @@ return $default(_that.characters,_that.isLoading,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CharacterModel characters,  bool isLoading,  String? error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CharacterModel? characters,  bool isLoading,  String? error,  List<List<CharacterResult>> pages,  List<int> pageKeys,  int retryAfterSeconds)  $default,) {final _that = this;
 switch (_that) {
 case _CharacterState():
-return $default(_that.characters,_that.isLoading,_that.error);case _:
+return $default(_that.characters,_that.isLoading,_that.error,_that.pages,_that.pageKeys,_that.retryAfterSeconds);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -211,10 +217,10 @@ return $default(_that.characters,_that.isLoading,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CharacterModel characters,  bool isLoading,  String? error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CharacterModel? characters,  bool isLoading,  String? error,  List<List<CharacterResult>> pages,  List<int> pageKeys,  int retryAfterSeconds)?  $default,) {final _that = this;
 switch (_that) {
 case _CharacterState() when $default != null:
-return $default(_that.characters,_that.isLoading,_that.error);case _:
+return $default(_that.characters,_that.isLoading,_that.error,_that.pages,_that.pageKeys,_that.retryAfterSeconds);case _:
   return null;
 
 }
@@ -226,12 +232,27 @@ return $default(_that.characters,_that.isLoading,_that.error);case _:
 @JsonSerializable()
 
 class _CharacterState implements CharacterState {
-   _CharacterState({this.characters = const [], this.isLoading = false, this.error = null});
+  const _CharacterState({this.characters, this.isLoading = false, this.error = null,  List<List<CharacterResult>> pages = const [],  List<int> pageKeys = const [], this.retryAfterSeconds = 0}): _pages = pages,_pageKeys = pageKeys;
   factory _CharacterState.fromJson(Map<String, dynamic> json) => _$CharacterStateFromJson(json);
 
-@override@JsonKey() final  CharacterModel characters;
+@override final  CharacterModel? characters;
 @override@JsonKey() final  bool isLoading;
 @override@JsonKey() final  String? error;
+ final  List<List<CharacterResult>> _pages;
+@override@JsonKey() List<List<CharacterResult>> get pages {
+  if (_pages is EqualUnmodifiableListView) return _pages;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_pages);
+}
+
+ final  List<int> _pageKeys;
+@override@JsonKey() List<int> get pageKeys {
+  if (_pageKeys is EqualUnmodifiableListView) return _pageKeys;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_pageKeys);
+}
+
+@override@JsonKey() final  int retryAfterSeconds;
 
 /// Create a copy of CharacterState
 /// with the given fields replaced by the non-null parameter values.
@@ -246,18 +267,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CharacterState&&(identical(other.characters, characters) || other.characters == characters)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.error, error) || other.error == error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CharacterState&&(identical(other.characters, characters) || other.characters == characters)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other.pages, _pages)&&const DeepCollectionEquality().equals(other.pageKeys, _pageKeys)&&(identical(other.retryAfterSeconds, retryAfterSeconds) || other.retryAfterSeconds == retryAfterSeconds));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,characters,isLoading,error);
+    return Object.hash(runtimeType,characters,isLoading,error,const DeepCollectionEquality().hash(_pages),const DeepCollectionEquality().hash(_pageKeys),retryAfterSeconds);
 }
 
 @override
 String toString() {
-    return 'CharacterState(characters: $characters, isLoading: $isLoading, error: $error)';
+    return 'CharacterState(characters: $characters, isLoading: $isLoading, error: $error, pages: $pages, pageKeys: $pageKeys, retryAfterSeconds: $retryAfterSeconds)';
 }
 
 
@@ -268,11 +289,11 @@ abstract mixin class _$CharacterStateCopyWith<$Res> implements $CharacterStateCo
   factory _$CharacterStateCopyWith(_CharacterState value, $Res Function(_CharacterState) _then) = __$CharacterStateCopyWithImpl;
 @override @useResult
 $Res call({
- CharacterModel characters, bool isLoading, String? error
+ CharacterModel? characters, bool isLoading, String? error, List<List<CharacterResult>> pages, List<int> pageKeys, int retryAfterSeconds
 });
 
 
-@override $CharacterModelCopyWith<$Res> get characters;
+@override $CharacterModelCopyWith<$Res>? get characters;
 
 }
 /// @nodoc
@@ -285,12 +306,15 @@ class __$CharacterStateCopyWithImpl<$Res>
 
 /// Create a copy of CharacterState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? characters = null,Object? isLoading = null,Object? error = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? characters = freezed,Object? isLoading = null,Object? error = freezed,Object? pages = null,Object? pageKeys = null,Object? retryAfterSeconds = null,}) {
   return _then(_CharacterState(
-characters: null == characters ? _self.characters : characters // ignore: cast_nullable_to_non_nullable
-as CharacterModel,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+characters: freezed == characters ? _self.characters : characters // ignore: cast_nullable_to_non_nullable
+as CharacterModel?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,pages: null == pages ? _self._pages : pages // ignore: cast_nullable_to_non_nullable
+as List<List<CharacterResult>>,pageKeys: null == pageKeys ? _self._pageKeys : pageKeys // ignore: cast_nullable_to_non_nullable
+as List<int>,retryAfterSeconds: null == retryAfterSeconds ? _self.retryAfterSeconds : retryAfterSeconds // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 
@@ -298,9 +322,12 @@ as String?,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$CharacterModelCopyWith<$Res> get characters {
-  
-  return $CharacterModelCopyWith<$Res>(_self.characters, (value) {
+$CharacterModelCopyWith<$Res>? get characters {
+    if (_self.characters == null) {
+    return null;
+  }
+
+  return $CharacterModelCopyWith<$Res>(_self.characters!, (value) {
     return _then(_self.copyWith(characters: value));
   });
 }

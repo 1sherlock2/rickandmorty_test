@@ -14,3 +14,7 @@ final class CharactersRequested extends CharacterEvent {
 final class CharacterNextPageRequested extends CharacterEvent {
   const CharacterNextPageRequested();
 }
+
+final class CharacterRetryCountdownTick extends CharacterEvent {
+  const CharacterRetryCountdownTick();
+}

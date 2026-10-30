@@ -23,7 +23,7 @@ class ApiClient {
         return formatExceptionFailure<CharacterModel>(error);
       }
     } on DioException catch (error) {
-      return Failure(Exception(error.message));
+      return Failure(error);
     } catch (error) {
       return Failure(FormatException('Failed to query $error'));
     }
