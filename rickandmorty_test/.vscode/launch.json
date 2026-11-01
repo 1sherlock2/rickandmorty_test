@@ -10,8 +10,8 @@
       "type": "dart",
       "program": "lib/main.dart",
       "flutterMode": "debug",
-      // "deviceId": "R5CT72240CZ",
-      "deviceId": "R5CY81CXD6P",
+      "deviceId": "R5CT72240CZ",
+      // "deviceId": "R5CY81CXD6P",
       "args": ["--debug"]
     }
   ]

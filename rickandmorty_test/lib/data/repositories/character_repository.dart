@@ -10,4 +10,9 @@ class CharacterRepository {
     final response = await _apiClient.getCharacters(page);
     return response.getOrThrow();
   }
+
+  Future<CharacterResult> getCharacter(String id) async {
+    final response = await _apiClient.getCharacter(id);
+    return response.getOrThrow();
+  }
 }

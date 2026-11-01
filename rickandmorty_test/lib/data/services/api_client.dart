@@ -28,4 +28,20 @@ class ApiClient {
       return Failure(FormatException('Failed to query $error'));
     }
   }
+
+  AsyncResult<CharacterResult> getCharacter(String id) async {
+    try {
+      final response = await _dio.get('$_baseUrl/character/$id');
+      try {
+        final data = response.data as Map<String, dynamic>;
+        return Success(CharacterResult.fromJson(data));
+      } catch (error) {
+        return formatExceptionFailure<CharacterResult>(error);
+      }
+    } on DioException catch (error) {
+      return Failure(error);
+    } catch (error) {
+      return Failure(FormatException('Failed to query $error'));
+    }
+  }
 }
